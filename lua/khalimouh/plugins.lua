@@ -59,7 +59,16 @@ return packer.startup(function(use)
     }
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "lewis6991/gitsigns.nvim"
-  -- Automatically set up your configuration after cloning packer.nvim
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
+  use 'nvim-lualine/lualine.nvim'
+  use 'lewis6991/impatient.nvim'
+  use "lukas-reineke/indent-blankline.nvim"
+  use 'tpope/vim-commentary'
+    use 'tpope/vim-fugitive'
+    -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
