@@ -1,3 +1,7 @@
+
+
+vim.g.tokyonight_style = "night"
+vim.o.background = "dark"
 local colorscheme = "tokyonight"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
