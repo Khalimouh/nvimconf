@@ -15,17 +15,17 @@ require'compe'.setup {
 
 
     source = {
-        path = true;
+        path = false;
         buffer = true;
-        calc = true;
-        vsnip = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        spell = true;
-        tags = true;
-        snippets_nvim = true;
+        calc = false;
+        vsnip = false;
+        nvim_lsp = false;
+        nvim_lua = false;
+        spell = false;
+        tags = false;
+        snippets_nvim = false;
         vim_dadbod_completion = true;
-        treesitter = true;
+        treesitter = false;
   };
 }
 
