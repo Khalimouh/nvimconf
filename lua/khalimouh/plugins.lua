@@ -67,8 +67,14 @@ return packer.startup(function(use)
   use 'lewis6991/impatient.nvim'
   use "lukas-reineke/indent-blankline.nvim"
   use 'tpope/vim-commentary'
-    use 'tpope/vim-fugitive'
-    -- Automatically set up your configuration after cloning packer.nvim
+  use 'tpope/vim-fugitive'
+
+  use 'nanotee/sqls.nvim'
+  use { 'tpope/vim-dadbod' }
+  use { 'kristijanhusak/vim-dadbod-ui' }
+    use { 'hrsh7th/nvim-compe' }
+    use  'kristijanhusak/vim-dadbod-completion' 
+  -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()

@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-compe",
+    url = "https://github.com/hrsh7th/nvim-compe"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -164,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["sqls.nvim"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/sqls.nvim",
+    url = "https://github.com/nanotee/sqls.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -183,6 +193,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
+  },
+  ["vim-dadbod"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-dadbod",
+    url = "https://github.com/tpope/vim-dadbod"
+  },
+  ["vim-dadbod-completion"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-dadbod-completion",
+    url = "https://github.com/kristijanhusak/vim-dadbod-completion"
+  },
+  ["vim-dadbod-ui"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-dadbod-ui",
+    url = "https://github.com/kristijanhusak/vim-dadbod-ui"
   },
   ["vim-fugitive"] = {
     loaded = true,
