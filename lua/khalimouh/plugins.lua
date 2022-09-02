@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use "folke/tokyonight.nvim"
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
+  use {"ray-x/lsp_signature.nvim"}
   use("neovim/nvim-lspconfig")
   use "hrsh7th/cmp-nvim-lsp"
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
