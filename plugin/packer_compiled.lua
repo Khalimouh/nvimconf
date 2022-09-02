@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-metals"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-metals",
+    url = "https://github.com/scalameta/nvim-metals"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",

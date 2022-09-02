@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use "folke/tokyonight.nvim"
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
-  use {"ray-x/lsp_signature.nvim"}
+    use {"ray-x/lsp_signature.nvim"}
   use("neovim/nvim-lspconfig")
   use "hrsh7th/cmp-nvim-lsp"
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
@@ -69,7 +69,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
-
+ use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   use 'nanotee/sqls.nvim'
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
