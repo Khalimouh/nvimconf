@@ -1,8 +1,8 @@
 
 
 vim.g.tokyonight_style = "night"
-vim.o.background = "dark"
-local colorscheme = "tokyonight"
+-- vim.o.background = "dark"
+local colorscheme = "github_dark_default"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
