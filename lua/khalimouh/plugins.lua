@@ -74,7 +74,8 @@ return packer.startup(function(use)
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'hrsh7th/nvim-compe' }
-    use  'kristijanhusak/vim-dadbod-completion' 
+    use  'kristijanhusak/vim-dadbod-completion'
+    use 'mfussenegger/nvim-jdtls'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
