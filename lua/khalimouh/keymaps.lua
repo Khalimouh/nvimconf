@@ -27,8 +27,9 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-p>", ":Telescope find_files <CR>", opts)
 keymap("n", "<C-a>", ":DBUIToggle <CR>", opts)
+keymap("n", "<F13>", ":ToggleTerm<CR>", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
