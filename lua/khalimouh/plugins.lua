@@ -70,7 +70,6 @@ return packer.startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
-  use 'nanotee/sqls.nvim'
   use { 'tpope/vim-dadbod' }
   use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'hrsh7th/nvim-compe' }
@@ -87,8 +86,7 @@ return packer.startup(function(use)
         require("tidy").setup()
     end
     })
-    use 'sainnhe/edge'
-  --&éAutomatically set up your configuration after cloning packer.nvim
+  --Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
