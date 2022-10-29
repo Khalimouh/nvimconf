@@ -49,7 +49,7 @@ local lsp_flags = {
 }
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require('lspconfig')
 
@@ -132,7 +132,7 @@ metals_config.settings = {
 }
 
 metals_config.on_attach = function(client, bufnr)
-  require("metals").setup_dap()
+  --require("metals").setup_dap()
 end
 
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
