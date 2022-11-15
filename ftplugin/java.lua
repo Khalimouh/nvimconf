@@ -3,7 +3,7 @@ print("Hello from  fucking java.lua")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 print(project_name)
 
-local workspace_dir = '/home/khalimouh/jdt/workspace/' .. project_name
+local workspace_dir = '/home/mohdebia/jdt/workspace/' .. project_name
 
 local config = {
   cmd = {
@@ -31,4 +31,3 @@ local config = {
   },
 }
 require('jdtls').start_or_attach(config)
-
