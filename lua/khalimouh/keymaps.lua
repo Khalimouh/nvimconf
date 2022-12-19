@@ -1,4 +1,3 @@
-
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -28,7 +27,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-p>", ":Telescope find_files <CR>", opts)
 keymap("n", "<C-a>", ":DBUIToggle <CR>", opts)
 keymap("n", "<F13>", ":ToggleTerm<CR>", opts)
-
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
 
 
 -- Resize with arrows

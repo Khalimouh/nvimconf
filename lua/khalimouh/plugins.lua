@@ -44,12 +44,12 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-    use "folke/tokyonight.nvim"
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use { "ray-x/lsp_signature.nvim" }
     use("neovim/nvim-lspconfig")
     use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
     use("glepnir/lspsaga.nvim")
     use("L3MON4D3/LuaSnip")
@@ -58,6 +58,7 @@ return packer.startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter"
     }
+    use 'marko-cerovac/material.nvim'
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "lewis6991/gitsigns.nvim"
     use 'kyazdani42/nvim-web-devicons'
@@ -66,10 +67,11 @@ return packer.startup(function(use)
     use "moll/vim-bbye"
     use 'nvim-lualine/lualine.nvim'
     use 'lewis6991/impatient.nvim'
+    use 'mfussenegger/nvim-dap'
     use "lukas-reineke/indent-blankline.nvim"
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
-    use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
+    use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", } })
     use { 'tpope/vim-dadbod' }
     use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'hrsh7th/nvim-compe' }
@@ -86,7 +88,6 @@ return packer.startup(function(use)
             require("tidy").setup()
         end
     })
-    use 'navarasu/onedark.nvim'
     use "lukas-reineke/lsp-format.nvim"
     --Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
