@@ -82,12 +82,21 @@ return packer.startup(function(use)
             direction = 'float'
         })
     end }
+    use "kdheepak/lazygit.nvim"
     use({
         "mcauley-penney/tidy.nvim",
         config = function()
             require("tidy").setup()
         end
     })
+    use {
+        "cuducos/yaml.nvim",
+        ft = { "yaml" }, -- optional
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-telescope/telescope.nvim" -- optional
+        },
+    }
     use "lukas-reineke/lsp-format.nvim"
     --Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
