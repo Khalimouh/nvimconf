@@ -1,2 +1,4 @@
 plugin/
-ftplugin/java.lua
+ftplugin/
+lazygit.tar.gz
+.vimrc
