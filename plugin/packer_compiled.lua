@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -109,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp-format.nvim"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
@@ -129,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -143,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-compe",
     url = "https://github.com/hrsh7th/nvim-compe"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-jdtls"] = {
     loaded = true,
@@ -179,11 +199,6 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -216,11 +231,6 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
-  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-bbye",
@@ -250,6 +260,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["yaml.nvim"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/opt/yaml.nvim",
+    url = "https://github.com/cuducos/yaml.nvim"
   }
 }
 
@@ -262,6 +279,13 @@ time([[Config for toggleterm.nvim]], false)
 time([[Config for tidy.nvim]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ttidy\frequire\0", "config", "tidy.nvim")
 time([[Config for tidy.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType yaml ++once lua require("packer.load")({'yaml.nvim'}, { ft = "yaml" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
