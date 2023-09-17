@@ -79,7 +79,10 @@ return packer.startup(function(use)
     use 'mfussenegger/nvim-jdtls'
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup({
-            direction = 'vertical'
+            direction = 'vertical',
+            persist_mode = true,
+            auto_scroll = true,
+            start_in_insert = true
         })
     end }
     use "kdheepak/lazygit.nvim"
