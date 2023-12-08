@@ -8,5 +8,7 @@
 --     vim.notify("colorscheme " .. colorscheme .. " not found!")
 --     return
 -- end
+vim.notify = require("notify")
+
 vim.g.material_style = "deep ocean"
 vim.cmd 'colorscheme material'
