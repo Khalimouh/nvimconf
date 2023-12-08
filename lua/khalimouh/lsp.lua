@@ -79,6 +79,10 @@ local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+
+require("luasnip/loaders/from_vscode").lazy_load()
+vim.opt.completeopt = "menu,menuone,noselect"
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -115,6 +119,8 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = "buffer" }, -- text within the current buffer
+        { name = "path" },
     },
 }
 

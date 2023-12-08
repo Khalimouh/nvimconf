@@ -47,12 +47,14 @@ return packer.startup(function(use)
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use { "ray-x/lsp_signature.nvim" }
-    use("neovim/nvim-lspconfig")
+    use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "L3MON4D3/LuaSnip"
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+    use("rafamadriz/friendly-snippets")
     use("glepnir/lspsaga.nvim")
-    use("L3MON4D3/LuaSnip")
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "nvim-telescope/telescope.nvim"
     use {
@@ -95,6 +97,8 @@ return packer.startup(function(use)
         },
     }
     use "lukas-reineke/lsp-format.nvim"
+    use "RRethy/vim-illuminate"
+    use 'rcarriga/nvim-notify'
     --Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

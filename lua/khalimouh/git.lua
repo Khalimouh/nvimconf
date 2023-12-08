@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-equire('gitsigns').setup {
+require('gitsigns').setup {
   signs = {
     add          = { text = '│' },
     change       = { text = '│' },
