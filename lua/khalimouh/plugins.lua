@@ -68,7 +68,10 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'lewis6991/impatient.nvim'
     use 'mfussenegger/nvim-dap'
-    use "lukas-reineke/indent-blankline.nvim"
+    use{
+        "lukas-reineke/indent-blankline.nvim",
+        tag = "v2.20.8"
+    }
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", } })
@@ -77,15 +80,6 @@ return packer.startup(function(use)
     use { 'hrsh7th/nvim-compe' }
     use 'kristijanhusak/vim-dadbod-completion'
     use 'mfussenegger/nvim-jdtls'
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup({
-            direction = 'vertical',
-            persist_mode = true,
-            auto_scroll = true,
-            start_in_insert = true
-        })
-    end }
-    use "kdheepak/lazygit.nvim"
     use({
         "mcauley-penney/tidy.nvim",
         config = function()
