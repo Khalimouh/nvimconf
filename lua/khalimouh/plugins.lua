@@ -60,7 +60,7 @@ return packer.startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter"
     }
-    use 'marko-cerovac/material.nvim'
+    use ({ 'projekt0n/github-nvim-theme' })   -- use 'marko-cerovac/material.nvim'
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "lewis6991/gitsigns.nvim"
     use 'kyazdani42/nvim-web-devicons'
