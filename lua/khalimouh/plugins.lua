@@ -44,50 +44,42 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-    -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
-    use { "ray-x/lsp_signature.nvim" }
+    use "ray-x/lsp_signature.nvim"
     use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "L3MON4D3/LuaSnip"
-    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-    use("rafamadriz/friendly-snippets")
-    use("glepnir/lspsaga.nvim")
+    use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
+    use "rafamadriz/friendly-snippets"
+    use "nvimdev/lspsaga.nvim"
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "nvim-telescope/telescope.nvim"
-    use {
-        "nvim-treesitter/nvim-treesitter"
-    }
-    use ({ 'projekt0n/github-nvim-theme' })   -- use 'marko-cerovac/material.nvim'
+    use "nvim-treesitter/nvim-treesitter"
+    use "projekt0n/github-nvim-theme"   -- use 'marko-cerovac/material.nvim'
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "lewis6991/gitsigns.nvim"
-    use 'kyazdani42/nvim-web-devicons'
-    use 'kyazdani42/nvim-tree.lua'
+    use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
-    use 'nvim-lualine/lualine.nvim'
-    use 'lewis6991/impatient.nvim'
-    use 'mfussenegger/nvim-dap'
-    use{
-        "lukas-reineke/indent-blankline.nvim",
-        tag = "v2.20.8"
-    }
-    use 'tpope/vim-commentary'
-    use 'tpope/vim-fugitive'
-    use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", } })
-    use { 'tpope/vim-dadbod' }
-    use { 'kristijanhusak/vim-dadbod-ui' }
-    use { 'hrsh7th/nvim-compe' }
-    use 'kristijanhusak/vim-dadbod-completion'
-    use 'mfussenegger/nvim-jdtls'
-    use({
-        "mcauley-penney/tidy.nvim",
+    use "nvim-lualine/lualine.nvim"
+    use "lewis6991/impatient.nvim"
+    use "mfussenegger/nvim-dap"
+    use { "lukas-reineke/indent-blankline.nvim", tag = "v2.20.8" }
+    use "tpope/vim-commentary"
+    use "tpope/vim-fugitive"
+    use { "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", } }
+    use { "folke/todo-comments.nvim", requires =  {"nvim-lua/plenary.nvim"}}
+    use "tpope/vim-dadbod"
+    use "kristijanhusak/vim-dadbod-ui"
+    use "kristijanhusak/vim-dadbod-completion"
+    use "mfussenegger/nvim-jdtls"
+    use {"mcauley-penney/tidy.nvim",
         config = function()
             require("tidy").setup()
         end
-    })
+    }
     use {
         "cuducos/yaml.nvim",
         ft = { "yaml" }, -- optional
@@ -96,9 +88,12 @@ return packer.startup(function(use)
             "nvim-telescope/telescope.nvim" -- optional
         },
     }
+    use { "nvim-telescope/telescope-ui-select.nvim" }
+    use { "nvim-tree/nvim-web-devicons"}
     use "lukas-reineke/lsp-format.nvim"
     use "RRethy/vim-illuminate"
-    use 'rcarriga/nvim-notify'
+    use "rcarriga/nvim-notify"
+
     --Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
