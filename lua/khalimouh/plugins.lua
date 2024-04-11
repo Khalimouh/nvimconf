@@ -57,7 +57,8 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "nvim-telescope/telescope.nvim"
     use "nvim-treesitter/nvim-treesitter"
-    use "projekt0n/github-nvim-theme"   -- use 'marko-cerovac/material.nvim'
+    -- use "projekt0n/github-nvim-theme"   -- use 'marko-cerovac/material.nvim'
+    use { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "lewis6991/gitsigns.nvim"
     use "kyazdani42/nvim-tree.lua"
