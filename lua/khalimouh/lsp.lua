@@ -1,13 +1,15 @@
-require("nvim-lsp-installer").setup({
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+require("mason").setup({
     ui = {
         icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
         }
     }
 })
+require("mason-lspconfig").setup {
+    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls" },
+}
 
 require("lsp-format").setup {}
 local opts = { noremap = true, silent = true }
@@ -16,6 +18,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -36,7 +39,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set('n', '<space>D',require('telescope.builtin').lsp_type_definitions, bufopts)
+    vim.keymap.set('n', '<space>D', require('telescope.builtin').lsp_type_definitions, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
@@ -50,7 +53,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pyright', 'bashls'}
+local servers = { 'clangd', 'pyright', 'bashls', 'lua_ls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
@@ -128,7 +131,7 @@ metals_config.on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set('n', '<space>D',require('telescope.builtin').lsp_type_definitions, bufopts)
+    vim.keymap.set('n', '<space>D', require('telescope.builtin').lsp_type_definitions, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)

@@ -54,7 +54,7 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
     use "rafamadriz/friendly-snippets"
     use "nvimdev/lspsaga.nvim"
-    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "nvim-telescope/telescope.nvim"
     use "nvim-treesitter/nvim-treesitter"
     -- use "projekt0n/github-nvim-theme"   -- use 'marko-cerovac/material.nvim'
@@ -94,6 +94,9 @@ return packer.startup(function(use)
     use "lukas-reineke/lsp-format.nvim"
     use "RRethy/vim-illuminate"
     use "rcarriga/nvim-notify"
+    use "nvimtools/none-ls.nvim"
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
 
     --Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
