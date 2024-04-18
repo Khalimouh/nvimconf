@@ -70,5 +70,5 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<C-n>", ":Neotree toggle<CR>", opts)
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)

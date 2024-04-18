@@ -24,7 +24,7 @@ vim.cmd [[
 ]]
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
+local ocal status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
 end
@@ -42,9 +42,9 @@ packer.init {
 return packer.startup(function(use)
     -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
-    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-    use "hrsh7th/nvim-cmp" -- The completion plugin
+    use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
+    use "hrsh7th/nvim-cmp"       -- The completion plugin
     use "ray-x/lsp_signature.nvim"
     use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
@@ -61,7 +61,15 @@ return packer.startup(function(use)
     use { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "lewis6991/gitsigns.nvim"
-    use "kyazdani42/nvim-tree.lua"
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
+    }
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
     use "nvim-lualine/lualine.nvim"
@@ -71,12 +79,12 @@ return packer.startup(function(use)
     use "tpope/vim-commentary"
     use "tpope/vim-fugitive"
     use { "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", } }
-    use { "folke/todo-comments.nvim", requires =  {"nvim-lua/plenary.nvim"}}
+    use { "folke/todo-comments.nvim", requires = { "nvim-lua/plenary.nvim" } }
     use "tpope/vim-dadbod"
     use "kristijanhusak/vim-dadbod-ui"
     use "kristijanhusak/vim-dadbod-completion"
     use "mfussenegger/nvim-jdtls"
-    use {"mcauley-penney/tidy.nvim",
+    use { "mcauley-penney/tidy.nvim",
         config = function()
             require("tidy").setup()
         end
@@ -90,7 +98,7 @@ return packer.startup(function(use)
         },
     }
     use { "nvim-telescope/telescope-ui-select.nvim" }
-    use { "nvim-tree/nvim-web-devicons"}
+    use { "nvim-tree/nvim-web-devicons" }
     use "lukas-reineke/lsp-format.nvim"
     use "RRethy/vim-illuminate"
     use "rcarriga/nvim-notify"

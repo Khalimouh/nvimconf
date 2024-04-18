@@ -1,1 +1,1 @@
-require("nvim-tree").setup()
+require("neo-tree").setup()
