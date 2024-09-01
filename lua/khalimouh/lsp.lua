@@ -8,7 +8,7 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup {
-    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls", "gopls", "terraformls", },
+    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls", "gopls", "terraformls" },
 }
 
 require("lsp-format").setup {}
