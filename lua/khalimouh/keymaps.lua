@@ -73,3 +73,5 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 keymap("n", "<C-n>", ":Neotree toggle<CR>", opts)
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<leader>lr", "<cmd>LspRestart<cr>", opts)
+keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", opts)

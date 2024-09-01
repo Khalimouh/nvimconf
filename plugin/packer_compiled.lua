@@ -265,6 +265,11 @@ _G.packer_plugins = {
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/home/khalimouh/.local/share/nvim/site/pack/packer/start/vim-bbye",

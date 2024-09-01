@@ -8,7 +8,7 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup {
-    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls", "gopls", "terraformls" },
+    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls", "gopls", "terraformls", },
 }
 
 require("lsp-format").setup {}
@@ -18,14 +18,6 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
-vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
-vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
-vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
-vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
-vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
-vim.cmd([[let g:terraform_fmt_on_save=1]])
-vim.cmd([[let g:terraform_align=1]])
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
