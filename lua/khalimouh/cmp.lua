@@ -97,7 +97,6 @@ cmp.setup {
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[NVIM_LUA]",
-                luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]",
                 ['vim-dadbod-completion'] = '[DB]',
