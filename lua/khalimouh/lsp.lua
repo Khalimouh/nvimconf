@@ -8,7 +8,7 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup {
-    ensure_installed = { "clangd", "pyright", "bashls", "lua_ls", "gopls", "terraformls" },
+    ensure_installed = { "pyright", "bashls", "lua_ls", "gopls", "terraformls" },
 }
 
 require("lsp-format").setup {}
@@ -52,7 +52,7 @@ local lspconfig = require('lspconfig')
 local util = require("lspconfig/util")
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pyright', 'bashls', 'lua_ls', 'terraformls' }
+local servers = { 'pyright', 'bashls', 'lua_ls', 'terraformls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
@@ -101,6 +101,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.lsp.buf.format()
     end,
 })
+
 ----- NVIM Metals --------------------------------
 local metals_config = require("metals").bare_config()
 
@@ -133,7 +134,7 @@ dap.configurations.scala = {
     },
 }
 
-metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+metals_config.capabilities = capabilities
 metals_config.on_attach = function(client, bufnr)
     require("metals").setup_dap()
     -- Enable completion triggered by <c-x><c-o>
