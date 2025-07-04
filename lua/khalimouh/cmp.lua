@@ -125,6 +125,7 @@ cmp.setup {
         native_menu = false,
     },
 }
+
 local autocomplete_group = vim.api.nvim_create_augroup('vimrc_autocompletion', { clear = true })
 
 vim.api.nvim_create_autocmd('FileType', {

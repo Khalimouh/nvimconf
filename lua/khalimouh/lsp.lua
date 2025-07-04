@@ -19,14 +19,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     require("lsp-format").on_attach(client)
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
@@ -51,7 +46,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local util = require("lspconfig/util")
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'pyright', 'bashls', 'lua_ls', 'terraformls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
