@@ -12,8 +12,8 @@ return {
     },
     {
       "folke/todo-comments.nvim",
-       dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
+    dependencies = { "nvim-lua/plenary.nvim" },
+       opts = {},
         ft='*'
     },
     {
