@@ -5,6 +5,7 @@ return {
     },
     {
         "rcarriga/nvim-notify",
+        lazy = false
     },
     {
         "RRethy/vim-illuminate",
@@ -12,10 +13,8 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        ft = "*",
         opts = {
-            prefer_git = true,
-        },
-        override_options = {
             ensure_installed = {
                 "python",
                 "go",
@@ -54,7 +53,7 @@ return {
                 "lua_ls",
                 "bashls",
                 "gopls",
-                "terraform_ls",
+                "terraformls",
                 "jqls",
             },
         },
