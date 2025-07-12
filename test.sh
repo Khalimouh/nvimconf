@@ -1,0 +1,3 @@
+if fondition; then
+	i command ...
+fi

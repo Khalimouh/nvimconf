@@ -6,13 +6,22 @@ local capabilities = config.capabilities
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
-local servers = { python= "pyright", lua="lua_ls" }
+local servers_w_files = { python= "pyright"}
 
-for file, lsp in pairs(servers) do
+for file, lsp in pairs(servers_w_files) do
   lspconfig[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {file},
+  })
+end
+
+
+local servers = {"bashls", "lua_ls","terraformls", "jqls"}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
   })
 end
 

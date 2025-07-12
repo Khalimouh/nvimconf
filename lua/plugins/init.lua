@@ -115,6 +115,13 @@ return {
                 "golangci_lint",
                 "yamllint",
                 "yamlfmt",
+                "buf",
+                "google_java_format",
+                "scalafmt",
+                "shfmt",
+                "scalafmt",
+                "sqlfluff",
+                "terragrunt_fmt"
             },
             auto_install = true
         }

@@ -9,10 +9,16 @@ local opts = {
         null_ls.builtins.formatting.golines,
         null_ls.builtins.formatting.terraform_fmt,
         null_ls.builtins.formatting.yamlfmt,
+        null_ls.builtins.formatting.buf,
+        null_ls.builtins.formatting.google_java_format,
+        null_ls.builtins.formatting.scalafmt,
+        null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.terragrunt_fmt,
         -- Diagnostics
         null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.sqlfluff,       
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then
