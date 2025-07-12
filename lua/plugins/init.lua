@@ -11,22 +11,29 @@ return {
         ft = '*'
     },
     {
-      "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-       opts = {},
-        ft='*'
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+            opts = {},
+            ft='*'
     },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "black",
-        "isort",
-        "pylint",
-        "pyright",
-      },
+    {
+        "mason-org/mason.nvim",
+        opts = {
+            ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+            },
+            ensure_installed = {
+            "black",
+            "isort",
+            "pylint",
+            "pyright",
+            },
+        },
     },
-  },
     {
         "neovim/nvim-lspconfig",
         config = function()
