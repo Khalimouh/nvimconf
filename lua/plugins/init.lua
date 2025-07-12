@@ -5,7 +5,7 @@ return {
     },
     {
         "rcarriga/nvim-notify",
-        lazy = false
+        lazy = false,
     },
     {
         "RRethy/vim-illuminate",
@@ -15,6 +15,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         ft = "*",
         opts = {
+            auto_install = true,
             ensure_installed = {
                 "python",
                 "go",
@@ -22,6 +23,29 @@ return {
                 "terraform",
                 "scala",
                 "java",
+                "jq",
+                "yaml",
+                "csv",
+                "dockerfile",
+                "dot",
+                "git_config",
+                "git_rebase",
+                "gitattributes",
+                "gitcommit",
+                "gitignore",
+                "gomod",
+                "gosum",
+                "gotmpl",
+                "gowork",
+                "helm",
+                "html",
+                "http",
+                "json",
+                "kotlin",
+                "lua",
+                "sql",
+                "xml"
+
             },
         },
     },
@@ -69,6 +93,13 @@ return {
         ft = { "*" },
         opts = function()
             return require "configs.null-ls"
+        end,
+    },
+    {
+        "olexsmir/gopher.nvim",
+        ft = "go",
+        build = function()
+            vim.cmd.GoInstallDeps()
         end,
     },
 }
