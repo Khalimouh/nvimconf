@@ -16,6 +16,17 @@ return {
        opts = {},
         ft='*'
     },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "black",
+        "isort",
+        "pylint",
+        "pyright",
+      },
+    },
+  },
     {
         "neovim/nvim-lspconfig",
         config = function()
