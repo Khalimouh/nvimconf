@@ -128,10 +128,9 @@ return {
     },
     {
         "olexsmir/gopher.nvim",
-        ft = "go",
+        ft = "*",
         build = function()
             vim.cmd.GoInstallDeps()
         end,
-        opts = {}
     },
 }

@@ -1,4 +1,5 @@
 require "nvchad.options"
+
 local options = {
     backup = false,                          -- creates a backup file
     clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
@@ -45,20 +46,6 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
-
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
-  },
-  paste = {
-    ['+'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ['*'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  },
-  cache_enabled = 0,
-}
-
 vim.diagnostic.config({
     virtual_text = true,
     signs = false,
