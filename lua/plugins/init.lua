@@ -1,18 +1,25 @@
 return {
     {
         "tpope/vim-fugitive",
-        lazy = false
+        ft='*'
+    },
+    {
+        "rcarriga/nvim-notify"
+    },
+    {
+        "RRethy/vim-illuminate",
+        ft = '*'
     },
     {
       "folke/todo-comments.nvim",
        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
-        lazy = false
+        ft='*'
     },
     {
         "neovim/nvim-lspconfig",
-            config = function()
-        require "configs.lspconfig"
+        config = function()
+            require "configs.lspconfig"
         end,
     },
 }
