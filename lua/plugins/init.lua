@@ -132,5 +132,6 @@ return {
         build = function()
             vim.cmd.GoInstallDeps()
         end,
+        opts = {}
     },
 }
