@@ -44,8 +44,7 @@ return {
                 "kotlin",
                 "lua",
                 "sql",
-                "xml"
-
+                "xml",
             },
         },
     },
@@ -94,6 +93,31 @@ return {
         opts = function()
             return require "configs.null-ls"
         end,
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "mason-org/mason.nvim",
+            "mason-org/mason-lspconfig.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        opts= {
+            ensure_installed = {
+                "isort",
+                "black",
+                "pylint",
+                "tflint",
+                "terraform_fmt",
+                "gofumpt",
+                "goimports_reviser",
+                "golines",
+                "golangci_lint",
+                "yamllint",
+                "yamlfmt",
+            },
+            auto_install = true
+        }
     },
     {
         "olexsmir/gopher.nvim",
