@@ -6,7 +6,10 @@
 local M = {}
 
 M.base46 = {
-	theme = "tokyonight",
+	theme = "material-deep-ocean",
 }
 
+M.nvdash = {
+  load_on_startup = true,
+}
 return M

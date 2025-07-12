@@ -1,37 +1,63 @@
 return {
     {
         "tpope/vim-fugitive",
-        ft='*'
+        ft = "*",
     },
     {
-        "rcarriga/nvim-notify"
+        "rcarriga/nvim-notify",
     },
     {
         "RRethy/vim-illuminate",
-        ft = '*'
+        ft = "*",
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+            prefer_git = true,
+        },
+        override_options = {
+            ensure_installed = {
+                "python",
+                "go",
+                "bash",
+                "terraform",
+                "scala",
+                "java",
+            },
+        },
     },
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-            opts = {},
-            ft='*'
+        opts = {},
+        ft = "*",
     },
     {
         "mason-org/mason.nvim",
-        lazy= false,
+        lazy = false,
         opts = {
             ui = {
                 icons = {
                     package_installed = "✓",
                     package_pending = "➜",
-                    package_uninstalled = "✗"
-                }
+                    package_uninstalled = "✗",
+                },
             },
         },
     },
     {
         "mason-org/mason-lspconfig.nvim",
         lazy = false,
+        opts = {
+            ensure_installed = {
+                "pyright",
+                "lua_ls",
+                "bashls",
+                "gopls",
+                "terraform_ls",
+                "jqls",
+            },
+        },
     },
     {
         "neovim/nvim-lspconfig",
@@ -41,7 +67,7 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
-        ft = {"*"},
+        ft = { "*" },
         opts = function()
             return require "configs.null-ls"
         end,
