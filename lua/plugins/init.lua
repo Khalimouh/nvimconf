@@ -11,6 +11,19 @@ return {
         ft = '*'
     },
     {
+       "nvim-treesitter/nvim-treesitter",
+        override_options = {
+            ensure_installed = {
+            "python",
+            "go",
+            "bash",
+            "terraform",
+            "scala",
+            "java"
+            }
+        }
+    },
+    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
             opts = {},
@@ -20,17 +33,17 @@ return {
         "mason-org/mason.nvim",
         opts = {
             ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗"
+                }
             },
             ensure_installed = {
-            "black",
-            "isort",
-            "pylint",
-            "pyright",
+                "black",
+                "isort",
+                "pylint",
+                "pyright"
             },
         },
     },
@@ -38,6 +51,13 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             require "configs.lspconfig"
+        end,
+    },
+    {
+        "nvimtools/none-ls.nvim",
+        ft = {"*"},
+        opts = function()
+            return require "configs.null-ls"
         end,
     },
 }
