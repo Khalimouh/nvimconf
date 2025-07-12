@@ -55,3 +55,6 @@ vim.diagnostic.config({
 })
 
 vim.notify = require("notify")
+
+-- Terraform related configuration
+require("configs.terraform")

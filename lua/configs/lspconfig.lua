@@ -17,7 +17,7 @@ for file, lsp in pairs(servers_w_files) do
 end
 
 
-local servers = {"bashls", "lua_ls","terraformls", "jqls"}
+local servers = {"bashls", "lua_ls","terraformls", "jqls","tflint"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = on_attach,
