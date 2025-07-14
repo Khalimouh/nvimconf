@@ -78,13 +78,14 @@ return {
                 "gopls",
                 "terraformls",
                 "jqls",
-                "tflint"
+                "tflint",
             },
+            automatic_enable = false
         },
     },
     {
         "neovim/nvim-lspconfig",
-        config = function()
+         config = function()
             require "configs.lspconfig"
         end,
     },
@@ -103,7 +104,7 @@ return {
             "mason-org/mason-lspconfig.nvim",
             "nvimtools/none-ls.nvim",
         },
-        opts= {
+        opts = {
             ensure_installed = {
                 "isort",
                 "black",
@@ -122,16 +123,23 @@ return {
                 "shfmt",
                 "scalafmt",
                 "sqlfluff",
-                "terragrunt_fmt"
+                "terragrunt_fmt",
             },
-            auto_install = true
-        }
+            auto_install = true,
+        },
     },
     {
         "olexsmir/gopher.nvim",
         ft = "*",
         build = function()
             vim.cmd.GoInstallDeps()
+        end,
+    },
+    {
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require "configs.nvim-lint"
         end,
     },
 }

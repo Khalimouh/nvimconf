@@ -15,10 +15,9 @@ local opts = {
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.terragrunt_fmt,
         -- Diagnostics
-        null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.yamllint,
-        null_ls.builtins.diagnostics.sqlfluff,       
+        null_ls.builtins.diagnostics.sqlfluff,
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then
@@ -36,5 +35,4 @@ local opts = {
         end
     end,
 }
-
 return opts
