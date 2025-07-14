@@ -15,6 +15,11 @@ local opts = {
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.terragrunt_fmt,
         -- Diagnostics
+        null_ls.builtins.diagnostics.pylint.with {
+            command = "./.venv/bin/pylint",
+            filetypes = { "python" },
+            root_dir = { ".git", "pyproject.toml", ".pylintrc", "setup.py", ".venv" },
+        },
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.yamllint,
         null_ls.builtins.diagnostics.sqlfluff,
