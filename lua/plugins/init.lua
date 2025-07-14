@@ -135,11 +135,4 @@ return {
             vim.cmd.GoInstallDeps()
         end,
     },
-    {
-        "mfussenegger/nvim-lint",
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require "configs.nvim-lint"
-        end,
-    },
 }
