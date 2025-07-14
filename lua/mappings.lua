@@ -6,7 +6,10 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-map("n", "<C-t>", ":Telescope git_branches <CR>", opts)
+map("n","<leader>lr", "<cmd>LspRestart<cr>")
+map("n", "<C-t>", "<cmd>Telescope git_branches<cr>", opts)
+map("n", "<leader>td", "<cmd>TodoTelescope<cr>", opts)
+map("n", "<leader>tb", "<cmd>Telescope buffers<cr>", opts)
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 map("n", "<C-s>", ":vsplit %<CR>", opts)
@@ -19,8 +22,6 @@ map("n", "<C-B>", ":bprevious<CR>", opts)
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
-map("n", "<leader>td", "<cmd>TodoTelescope<cr>", opts)
-map("n", "<leader>tb", "<cmd>Telescope buffers<cr>", opts)
 
 -- Gopher mappings
 map("n", "<leader>ge", "<cmd>GoIfErr<cr>", opts)
