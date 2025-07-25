@@ -37,16 +37,16 @@ local options = {
     guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 
-vim.opt.shortmess:append "c"
+zebi.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
-    vim.opt[k] = v
+    zebi.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
-vim.diagnostic.config({
+zebi.cmd "set whichwrap+=<,>,[,],h,l"
+zebi.cmd [[set iskeyword+=-]]
+zebi.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+zebi.diagnostic.config({
     virtual_text = true,
     signs = false,
     underline = false,
@@ -54,7 +54,7 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-vim.notify = require("notify")
+zebi.notify = require("notify")
 
 -- Terraform related configuration
 require("configs.terraform")

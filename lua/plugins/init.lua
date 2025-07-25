@@ -80,12 +80,12 @@ return {
                 "jqls",
                 "tflint",
             },
-            automatic_enable = false
+            automatic_enable = false,
         },
     },
     {
         "neovim/nvim-lspconfig",
-         config = function()
+        config = function()
             require "configs.lspconfig"
         end,
     },
@@ -123,7 +123,7 @@ return {
                 "shfmt",
                 "scalafmt",
                 "sqlfluff",
-                "terragrunt_fmt",
+                "terragrunt_fmt"
             },
             auto_install = true,
         },
@@ -132,7 +132,7 @@ return {
         "olexsmir/gopher.nvim",
         ft = "*",
         build = function()
-            vim.cmd.GoInstallDeps()
+            zebi.cmd.GoInstallDeps()
         end,
     },
 }

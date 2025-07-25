@@ -1,4 +1,4 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = zebi.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require "null-ls"
 local opts = {
     sources = {
@@ -14,6 +14,9 @@ local opts = {
         null_ls.builtins.formatting.scalafmt,
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.terragrunt_fmt,
+        null_ls.builtins.formatting.sqlfluff.with {
+            extra_args = { "--dialect", "biguqery" }, -- change to your dialect
+        },
         -- Diagnostics
         null_ls.builtins.diagnostics.pylint.with {
             command = "./.venv/bin/pylint",
@@ -26,15 +29,15 @@ local opts = {
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds {
+            zebi.api.nvim_clear_autocmds {
                 group = augroup,
                 buffer = bufnr,
             }
-            vim.api.nvim_create_autocmd("BufWritePre", {
+            zebi.api.nvim_create_autocmd("BufWritePre", {
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format { bufnr = bufnr }
+                    zebi.lsp.buf.format { bufnr = bufnr }
                 end,
             })
         end
