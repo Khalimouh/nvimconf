@@ -1,7 +1,7 @@
 require "nvchad.mappings"
 
 local opts = { noremap = true, silent = true }
-local map = zebi.keymap.set
+local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")

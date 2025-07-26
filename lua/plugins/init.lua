@@ -132,7 +132,7 @@ return {
         "olexsmir/gopher.nvim",
         ft = "*",
         build = function()
-            zebi.cmd.GoInstallDeps()
+            vim.cmd.GoInstallDeps()
         end,
     },
 }
