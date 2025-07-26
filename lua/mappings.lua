@@ -33,3 +33,14 @@ map("n", "<leader>ti", ":!terraform init<CR>", opts)
 map("n", "<leader>tv", ":!terraform validate<CR>", opts)
 map("n", "<leader>tp", ":!terraform plan<CR>", opts)
 map("n", "<leader>taa", ":!terraform apply -auto-approve<CR>", opts)
+
+-- Move text up and down
+map("v", "<A-j>", ":m .+1<CR>==", opts)
+map("v", "<A-k>", ":m .-2<CR>==", opts)
+
+-- Visual Block --
+-- Move text up and down
+map("x", "J", ":move '>+1<CR>gv-gv", opts)
+map("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
