@@ -15,7 +15,7 @@ local opts = {
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.terragrunt_fmt,
         null_ls.builtins.formatting.sqlfluff.with {
-            extra_args = { "--dialect", "biguqery" }, -- change to your dialect
+            extra_args = { "--dialect", "bigquery" }, -- change to your dialect
         },
         -- Diagnostics
         null_ls.builtins.diagnostics.pylint.with {
