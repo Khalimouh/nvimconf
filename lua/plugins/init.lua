@@ -138,53 +138,35 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        opts = function(_, opts)
-            opts.presets = {
-                command_palette = {
-                    views = {
-                        cmdline_popup = {
-                            position = {
-                                row = "50%",
-                                col = "50%",
-                            },
-                            size = {
-                                min_width = 60,
-                                width = "auto",
-                                height = "auto",
-                            },
-                        },
-                        popupmenu = {
-                            relative = "editor",
-                            position = {
-                                row = 23,
-                                col = "50%",
-                            },
-                            size = {
-                                width = 60,
-                                height = "auto",
-                                max_height = 15,
-                            },
-                            border = {
-                                style = "rounded",
-                                padding = { 0, 1 },
-                            },
-                            win_options = {
-                                winhighlight = { Normal = "Normal", FloatBorder = "NoiceCmdlinePopupBorder" },
-                            },
-                        },
-                    },
-                },
-            }
-        end,
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         },
-
         config = function()
             local noice = require "noice"
 
             noice.setup {
+                cmdline = {
+                    view = "cmdline_popup",
+                },
+                views = {
+                    cmdline_popup = {
+                        position = {
+                            row = vim.o.lines - 5, -- 5 lines from the bottom
+                            col = "50%",
+                        },
+                        size = {
+                            width = 60,
+                            height = "auto",
+                        },
+                        border = {
+                            style = "rounded",
+                        },
+                        win_options = {
+                            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+                        },
+                    },
+                },
                 lsp = {
                     override = {
                         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
