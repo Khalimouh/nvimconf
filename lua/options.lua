@@ -58,3 +58,5 @@ vim.notify = require("notify")
 
 -- Terraform related configuration
 require("configs.terraform")
+require('telescope').load_extension('projects')
+require'telescope'.extensions.projects.projects{}
