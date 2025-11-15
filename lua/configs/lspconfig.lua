@@ -23,22 +23,31 @@ end
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
-lspconfig.pyright.setup {
+--- Pyright Configuration
+-- Use vim.lsp.config() to set the options for 'pyright'
+vim.lsp.config("pyright", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "python" },
-}
+})
+-- Use vim.lsp.enable() to enable the server config
+vim.lsp.enable("pyright")
 
+--- General Servers Configuration
 local servers = { "bashls", "lua_ls", "terraformls", "jqls", "tflint" }
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
+    -- Use vim.lsp.config() to set common options for each server
+    vim.lsp.config(lsp, {
         on_attach = on_attach,
         capabilities = capabilities,
-    }
+    })
+    -- Use vim.lsp.enable() to enable the server config
+    vim.lsp.enable(lsp)
 end
 
--- Golang Configuration
-lspconfig.gopls.setup {
+--- Golang Configuration
+-- Use vim.lsp.config() for server-specific options
+vim.lsp.config("gopls", {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = { "gopls" },
@@ -53,4 +62,6 @@ lspconfig.gopls.setup {
             },
         },
     },
-}
+})
+-- Use vim.lsp.enable() to enable the server config
+vim.lsp.enable("gopls")
