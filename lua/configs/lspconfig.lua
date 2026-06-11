@@ -1,67 +1,93 @@
-local config = require "nvchad.configs.lspconfig"
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local bufnr = args.buf
+        local map = function(lhs, rhs)
+            vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true })
+        end
 
-local capabilities = config.capabilities
-local on_attach = function(client, bufnr)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, bufopts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set("n", "<space>D", require("telescope.builtin").lsp_type_definitions, bufopts)
-    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
-    vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
-end
-
-local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
-
---- Pyright Configuration
--- Use vim.lsp.config() to set the options for 'pyright'
-vim.lsp.config("pyright", {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "python" },
+        map("gD", vim.lsp.buf.declaration)
+        map("gd", require("telescope.builtin").lsp_definitions)
+        map("K", vim.lsp.buf.hover)
+        map("gi", require("telescope.builtin").lsp_implementations)
+        map("gr", require("telescope.builtin").lsp_references)
+        map("<C-k>", vim.lsp.buf.signature_help)
+        map("<space>D", require("telescope.builtin").lsp_type_definitions)
+        map("<space>rn", vim.lsp.buf.rename)
+        map("<space>ca", vim.lsp.buf.code_action)
+        map("<space>f", vim.lsp.buf.format)
+    end,
 })
--- Use vim.lsp.enable() to enable the server config
-vim.lsp.enable("pyright")
 
---- General Servers Configuration
-local servers = { "bashls", "lua_ls", "terraformls", "jqls", "tflint" }
-for _, lsp in ipairs(servers) do
-    -- Use vim.lsp.config() to set common options for each server
-    vim.lsp.config(lsp, {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    })
-    -- Use vim.lsp.enable() to enable the server config
-    vim.lsp.enable(lsp)
-end
-
---- Golang Configuration
--- Use vim.lsp.config() for server-specific options
-vim.lsp.config("gopls", {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+vim.lsp.config("basedpyright", {
     settings = {
-        gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-            analyses = {
-                unusedparams = true,
+        basedpyright = {
+            typeCheckingMode = "standard",
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                venvPath = ".", -- directory containing the venv
+                venv = ".venv", -- venv folder name
             },
         },
     },
 })
--- Use vim.lsp.enable() to enable the server config
-vim.lsp.enable("gopls")
+
+-- Golang Configuration
+vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    settings = {
+        gopls = {
+            -- Complétion
+            completeUnimported = true,
+            usePlaceholders = true,
+
+            -- Analyses statiques
+            analyses = {
+                unusedparams = true,
+                unusedvariable = true,
+                unusedwrite = true,
+                useany = true,
+                nilness = true,
+                shadow = true,
+            },
+
+            -- Hints (inlay hints)
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+
+            -- Staticcheck (linter supplémentaire)
+            staticcheck = true,
+
+            -- Formatage
+            gofumpt = true, -- plus strict que gofmt (nécessite gofumpt installé)
+
+            -- Semantic tokens (meilleure coloration syntaxique)
+            semanticTokens = true,
+
+            -- Code lens (références, tests, benchmarks inline)
+            codelenses = {
+                gc_details = true,      -- détails du garbage collector
+                generate = true,        -- go generate
+                regenerate_cgo = true,
+                run_govulncheck = true, -- vérification des vulnérabilités
+                test = true,
+                tidy = true,            -- go mod tidy
+                upgrade_dependency = true,
+                vendor = true,
+            },
+        },
+    },
+})
+
+local servers = { "bashls", "lua_ls", "terraformls", "tflint", "basedpyright" ,"jqls", "gopls"}
+for _, lsp in ipairs(servers) do
+    vim.lsp.enable(lsp)
+end
