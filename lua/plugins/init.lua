@@ -195,5 +195,20 @@ return {
                 },
             }
         end,
+    },
+    {
+        "ahmedkhalf/project.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("project_nvim").setup({
+                detection_methods = { "pattern" },
+                patterns = { ".git" },
+                silent_chdir = true,
+            })
+            require("telescope").load_extension("projects")
+        end,
+        keys = {
+            { "<leader>tp", "<cmd>Telescope projects<cr>", desc = "Switch project" },
+        },
     }
 }

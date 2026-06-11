@@ -28,12 +28,6 @@ map("n", "<leader>ge", "<cmd>GoIfErr<cr>", opts)
 map("n", "<leader>gj", "<cmd>GoTagAdd json<cr>", opts)
 map("n", "<leader>gy", "<cmd>GoTagAdd yaml<cr>", opts)
 
--- Terraform mappings
-map("n", "<leader>ti", ":!terraform init<CR>", opts)
-map("n", "<leader>tv", ":!terraform validate<CR>", opts)
-map("n", "<leader>tp", ":!terraform plan<CR>", opts)
-map("n", "<leader>taa", ":!terraform apply -auto-approve<CR>", opts)
-
 -- Move text up and down
 map("v", "<A-j>", ":m .+1<CR>==", opts)
 map("v", "<A-k>", ":m .-2<CR>==", opts)
