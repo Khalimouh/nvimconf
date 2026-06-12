@@ -209,6 +209,38 @@ return {
         end,
         keys = {
             { "<leader>tp", "<cmd>Telescope projects<cr>", desc = "Switch project" },
+        }
+    },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {},
+        ft = { "markdown" },
+    },
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        build = "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
         },
-    }
+        opts = {
+            provider = "claude",
+            providers = {
+                claude = {
+                    model = "claude-sonnet-4-6",
+                    api_key_name = "ANTHROPIC_API_KEY",
+                    extra_request_body = {
+                        temperature = 0,
+                    },
+                },
+            },
+            windows = {
+                position = "right",
+            },
+        },
+    } 
 }
