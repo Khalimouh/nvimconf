@@ -1,8 +1,5 @@
 return {
     ensure_installed = {
-        "isort",
-        "black",
-        "pylint",
         "tflint",
         "terraform_fmt",
         "gofumpt",

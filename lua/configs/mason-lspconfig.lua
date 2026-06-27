@@ -1,6 +1,7 @@
 return {
     ensure_installed = {
         "basedpyright",
+        "ruff",
         "lua_ls",
         "bashls",
         "gopls",
