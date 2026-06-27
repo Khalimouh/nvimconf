@@ -19,7 +19,7 @@ local opts = {
         },
         -- Diagnostics
         null_ls.builtins.diagnostics.pylint.with {
-            command = "./.venv/bin/pylint",
+            command = "pylint",
             filetypes = { "python" },
             root_dir = { ".git", "pyproject.toml", ".pylintrc", "setup.py", ".venv" },
         },
