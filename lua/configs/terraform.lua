@@ -14,12 +14,11 @@ vim.filetype.add({
 	  },
 	})
 
-	-- ── Terraform settings ────────────────────────────────────────────────────
-
-	vim.api.nvim_create_autocmd('FileType', {
-	  pattern = { 'terraform', 'hcl' },
-	  callback = function()
-	    vim.b.terraform_fmt_on_save = 1  -- auto-format on save (used by none-ls)
-	    vim.b.terraform_align = 1        -- align = signs in terraform blocks
-	  end,
-	})
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
+    pattern = { "*.tf", "*.tfvars" },
+    callback = function()
+        if #vim.lsp.get_clients({ name = "terraformls", bufnr = 0 }) > 0 then
+            vim.lsp.codelens.refresh({ bufnr = 0 })
+        end
+    end,
+})

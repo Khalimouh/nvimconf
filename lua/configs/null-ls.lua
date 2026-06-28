@@ -7,17 +7,25 @@ return {
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.golines,
-        null_ls.builtins.diagnostics.golangci_lint,
+        null_ls.builtins.diagnostics.golangci_lint.with {
+            timeout = 10000,
+        },
 
         -- Terraform
         null_ls.builtins.formatting.terraform_fmt,
-        null_ls.builtins.formatting.terragrunt_fmt,
+        null_ls.builtins.formatting.terragrunt_fmt.with {
+            condition = function(utils)
+                return utils.root_has_file { "terragrunt.hcl", ".terragrunt" }
+            end,
+        },
 
         -- SQL (BigQuery dialect)
         null_ls.builtins.formatting.sqlfluff.with {
             extra_args = { "--dialect", "bigquery" },
         },
-        null_ls.builtins.diagnostics.sqlfluff,
+        null_ls.builtins.diagnostics.sqlfluff.with {
+            extra_args = { "--dialect", "bigquery" },
+        },
 
         -- YAML
         null_ls.builtins.formatting.yamlfmt,

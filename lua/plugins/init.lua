@@ -1,7 +1,7 @@
 return {
     {
         "tpope/vim-fugitive",
-        ft = "*",
+        lazy = false,
     },
     {
         "rcarriga/nvim-notify",
@@ -9,11 +9,11 @@ return {
     },
     {
         "RRethy/vim-illuminate",
-        ft = "*",
+        lazy = false,
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        ft = "*",
+        event = "BufReadPost",
         opts = function()
             return require "configs.treesitter"
         end,
@@ -22,7 +22,7 @@ return {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
-        ft = "*",
+        lazy = false,
     },
     {
         "mason-org/mason.nvim",
@@ -46,7 +46,7 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
-        ft = { "*" },
+        event = { "BufReadPre", "BufNewFile" },
         opts = function()
             return require "configs.null-ls"
         end,
@@ -65,7 +65,7 @@ return {
     },
     {
         "olexsmir/gopher.nvim",
-        ft = "*",
+        ft = "go",
         build = function()
             vim.cmd.GoInstallDeps()
         end,

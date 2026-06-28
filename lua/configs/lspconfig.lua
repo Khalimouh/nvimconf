@@ -24,13 +24,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local bufnr = args.buf
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-        local map = function(lhs, rhs)
-            vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true })
+        local map = function(lhs, rhs, desc)
+            vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
         end
 
         -- ruff handles lint/format; basedpyright handles hover/types
         if client and client.name == "ruff" then
             client.server_capabilities.hoverProvider = false
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr, filter = function(c) return c.name == "ruff" end })
+                end,
+            })
         end
 
         if client and client.supports_method "textDocument/inlayHint"
@@ -38,15 +44,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
 
-        map("gD", vim.lsp.buf.declaration)
-        map("gd", require("telescope.builtin").lsp_definitions)
-        map("K", vim.lsp.buf.hover)
-        map("gi", require("telescope.builtin").lsp_implementations)
-        map("gr", require("telescope.builtin").lsp_references)
-        map("<C-k>", vim.lsp.buf.signature_help)
-        map("<space>D", require("telescope.builtin").lsp_type_definitions)
-        map("<space>rn", vim.lsp.buf.rename)
-        map("<space>ca", vim.lsp.buf.code_action)
+        map("gD", vim.lsp.buf.declaration, "Go to declaration")
+        map("gd", require("telescope.builtin").lsp_definitions, "Go to definition")
+        map("K", vim.lsp.buf.hover, "Hover documentation")
+        map("gi", require("telescope.builtin").lsp_implementations, "Go to implementation")
+        map("gr", require("telescope.builtin").lsp_references, "Go to references")
+        map("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+        map("<space>D", require("telescope.builtin").lsp_type_definitions, "Go to type definition")
+        map("<space>rn", vim.lsp.buf.rename, "Rename symbol")
+        map("<space>ca", vim.lsp.buf.code_action, "Code action")
         map("<space>f", function()
             local clients = vim.lsp.get_clients { bufnr = bufnr }
             local has_null_ls_fmt = vim.iter(clients):any(function(c)
@@ -61,7 +67,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     return c.name ~= "null-ls"
                 end,
             }
-        end)
+        end, "Format buffer")
     end,
 })
 
@@ -84,6 +90,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("basedpyright", {
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
     settings = {
         basedpyright = {
             typeCheckingMode = "standard",
@@ -92,6 +99,12 @@ vim.lsp.config("basedpyright", {
                 useLibraryCodeForTypes = true,
                 venvPath = ".",
                 venv = ".venv",
+                inlayHints = {
+                    variableTypes = true,
+                    returnTypes = true,
+                    callArgumentNames = true,
+                    functionReturnTypes = true,
+                },
             },
         },
     },
@@ -104,7 +117,9 @@ vim.lsp.config("terraformls", {
     init_options = {
         experimentalFeatures = {
             prefillRequiredFields = true,
-            validateOnSave = true,
+        },
+        validation = {
+            enableEnhancedValidation = true,
         },
         ignoreSingleFileWarning = true,
     },
@@ -117,8 +132,13 @@ vim.lsp.config("terraformls", {
     end,
 })
 
+vim.lsp.config("tflint", {
+    root_markers = { ".tflint.hcl", ".terraform.lock.hcl", ".git" },
+})
+
 vim.lsp.config("gopls", {
     cmd = { "gopls" },
+    root_markers = { "go.work", "go.mod", ".git" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     settings = {
         gopls = {
