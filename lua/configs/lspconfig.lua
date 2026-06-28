@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("<space>D", require("telescope.builtin").lsp_type_definitions, "Go to type definition")
         map("<space>rn", vim.lsp.buf.rename, "Rename symbol")
         map("<space>ca", vim.lsp.buf.code_action, "Code action")
-        map("<space>f", function()
+        map("<space>fm", function()
             local clients = vim.lsp.get_clients { bufnr = bufnr }
             local has_null_ls_fmt = vim.iter(clients):any(function(c)
                 return c.name == "null-ls" and c.supports_method "textDocument/formatting"
